@@ -1,0 +1,13 @@
+*.aux
+*.lof
+*.lot
+*.log
+*.out
+*.pdf
+*.bbl
+*.blg
+*.ps
+.xxxnote
+.spacing
+.embed.pdf
+.chapterincludes

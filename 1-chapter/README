@@ -1,0 +1,32 @@
+10 Jul 2010 : GWA : Modified thesis template.
+
+Each chapter directory must include the following:
+
+Assuming your chapter directory name is 1-chapter:
+
+1) A symlink to itself. This allows the chapter to be built as part of the
+entire thesis or individually. The symlink name must match the directory
+name.
+
+2) 1-chapter.tex: Tex file used to build the chapter alone. You can use the
+example included as a guide. Note that this pulls in "../template.chapter"
+from the parent directory which can be used to define common bits of the tex
+file for all chapters. (I used this to define PDF metadata.)
+
+3) Makefile: symlinked to ../Makefile.chapter, used to build the chapters.
+
+4) hut10.clo, hut11.clo, hut12.clo, huthesis.cls: symlinked to Harvard Thesis
+latex class files located in parent directory.
+
+5) include.tex: defines the structure of the chapter. Cleanest is to use only
+\input statements here. Since this is used by both the chapter and whole
+document build paths are relative to the parent directory. Our self-named
+symlink ensures that we stay in the same directory when building the chapter
+alone.
+
+6) references.bib: symlinks to the common references bibliography file in the
+parent directory.
+
+Optional:
+
+7) figs: figure directory for this chapter.

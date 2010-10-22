@@ -1,0 +1,48 @@
+10 Jul 2010 : GWA : Modified thesis template.
+
+I started with the old reliable huthesis.cls and template which I got from
+Bor-rong. In the process of writing my thesis I found a great deal of time to
+procrastinate and muck with things. Here are some of the improvements I
+believe I made:
+
+1) Makefile modifications so that bibtex no longer runs when there aren't any
+citations. This always bugged me.
+
+2) Ability to build individual chapters separately. Note that some links
+between chapters will break in these cases, which is unavoidable. However,
+this can be useful when you are drilling down in one area and get tired of
+waiting for the full build to complete.
+
+3) Fairly easy process established to add chapters. Simply set up the
+subdirectory is described in the README in 1-chapter and then add to the
+SUBDIRS variable in the top-level Makefile. Chapters will build in the order
+listed.
+
+4) Easily disable/enable single spacing and the inclusion of MDW-style
+"\XXXnotes" in your text. Single spacing is great when providing hard copies
+for old-school readers.
+
+5) "make install" pushes PDFs to a web share for easy distribution to your
+committee.
+
+6) There were a few little formatting bugs and weirdnesses I discovered and
+altered in the original LaTex class files. Depending on how the document
+standards evolve these may need more adjusting in the future.
+
+7) Better treatment of file dependencies in make which should avoid almost
+all spurious rebuilds.
+
+Just a few other miscellaneous notes:
+
+* the SVNIGNORE file includes a set of file pattern matches suitable for a
+typical thesis directory. To use it, run "svnpropset -F /path/to/SVNIGNORE
+svn:ignore ." in the directory you're after. Note that this will set up PDF
+files to *not* be tracked in your repository. Change this if it's not what
+you want.
+
+* there are various hidden files (.spacing, .xxxnote, .chapterincludes) that
+are used by make internally for holding various variable. Sometimes these
+need to be generated the first time you build in a given directory, so if a
+build fails always just repeat it once or twice to see if this is the
+problem. These files should *not* be removed by "make clean" so once you have
+them they should stay there and this problem should not reemerge.
